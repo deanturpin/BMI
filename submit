@@ -9,10 +9,15 @@ MIME
 [[ $QUERY_STRING == '' ]] && echo no query && exit
 
 db=weights.csv
+date=$(date +%Y/%m/%d)
 
-echo -e "$(date +%Y/%m/%d),\t$QUERY_STRING\n$(cat $db)" > $db
+if [[ $(grep $date $db) ]]; then
+	echo already submitted today
+else
+	echo -e "$date,\t$QUERY_STRING\n" >> $db
+	cat '<pre>' $db '</pre>'
 
-cat '<pre>' $db '</pre>'
+	# height=182
+	# echo $(( (753 / ((182 * 182) / (100 * 100))) / 10 ))
+fi
 
-# height=182
-# echo $(( (753 / ((182 * 182) / (100 * 100))) / 10 ))
