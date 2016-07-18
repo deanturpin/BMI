@@ -1,8 +1,6 @@
 import System.Environment (getArgs)
-import System.IO
 
 main = do
 	args <- getArgs
-	file <- openFile (head args) ReadMode
-	text <- hGetContents file
-	print text
+	print $ args!!0
+	print $ args!!1
