@@ -1,23 +1,27 @@
 #!/bin/bash
 
+# Send all stderr to stdout
+exec 2>&1
+
+# Print MIME type (and an extra blank line)
 cat <<MIME
 Content-Type: text/plain
-Access-Control-Allow-Origin: *
 
 MIME
 
+# Check params
 [[ $QUERY_STRING == '' ]] && echo no query && exit
 
+# Database
 db=weights.csv
+
+# Today's date
 date=$(date +%Y/%m/%d)
 
+# Check if we've already submitted one today
 if [[ $(grep $date $db) ]]; then
 	echo already submitted today
 else
 	echo -e "$date,\t$QUERY_STRING\n" >> $db
-	cat '<pre>' $db '</pre>'
-
-	# height=182
-	# echo $(( (753 / ((182 * 182) / (100 * 100))) / 10 ))
+	cat $db
 fi
-
