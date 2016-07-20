@@ -12,6 +12,8 @@ MIME
 # Check params
 [[ $QUERY_STRING == '' ]] && echo no query && exit
 
+readonly mass=$QUERY_STRING
+
 # Database
 db=weights.csv
 
@@ -22,6 +24,9 @@ date=$(date +%Y/%m/%d)
 if [[ $(grep $date $db) ]]; then
 	echo already submitted today
 else
-	echo -e "$date,\t$QUERY_STRING\n" >> $db
+	echo -e "$date,\t$mass" >> $db
 	cat $db
+
+	# Print stats
+	runghc bmi.hs $mass
 fi
