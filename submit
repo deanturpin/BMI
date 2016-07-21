@@ -24,7 +24,7 @@ date=$(date +%Y/%m/%d)
 if [[ $(grep $date $db) ]]; then
 	echo already submitted today
 else
-	echo -e "$date,\t$mass" >> $db
+	echo -e "$date,$mass" >> $db
 	cat $db
 
 	# Print stats
