@@ -10,7 +10,7 @@ Content-Type: text/plain
 MIME
 
 # Check params
-[[ $QUERY_STRING == '' ]] && echo no query && exit
+[[ $QUERY_STRING == '' ]] && echo Error: no query && exit
 
 readonly mass=$QUERY_STRING
 
@@ -22,10 +22,10 @@ date=$(date +%Y/%m/%d)
 
 # Check if we've already submitted one today
 if [[ $(grep $date $db) ]]; then
-	echo already submitted today
+	echo Error: already submitted today
 else
-	echo -e "$date,$mass" >> $db
-	cat $db
+	echo -e "$date,\t$mass" >> $db
+	tail $db
 
 	# Print stats
 	runghc bmi.hs $mass
