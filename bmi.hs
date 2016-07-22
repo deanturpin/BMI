@@ -9,8 +9,9 @@ bmi mass = mass / (height * height)
 -- Calculate tyre pressures
 -- Pressures proportional to combined mass of the rider and bike
 -- Assumes 25mm tyre
+-- toRational(1 / (2.2 * 0.978))
 bikeMass = 11
-pressure riderMass loading = (((riderMass + bikeMass) * loading) * (55 / 71)) + 48
+pressure riderMass loading = (((riderMass + bikeMass) * 2.2 * 0.978 * loading)) + (-10.187)
 
 -- Read params
 -- Calculate BMI
