@@ -9,3 +9,4 @@ bmi mass = mass / (height * height)
 main = do
 	args <- getArgs
 	print $ bmi (read (head args) :: Double)
+	print $ (25 + 18.5) / 2
