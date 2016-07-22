@@ -21,11 +21,7 @@ main = do
 	print $ bmi (read (head args) :: Double)
 	putStr "BMI "
 	print $ (25 + 18.5) / 2
-	putStr "Front mass "
-	print $ (bikeMass + (read (head args)) :: Double) * 0.4
 	putStr "Front pressure "
 	print $ pressure (read (head args) :: Double) 0.4
-	putStr "Rear mass "
-	print $ (bikeMass + (read (head args) :: Double)) * 0.6
 	putStr "Rear pressure "
 	print $ pressure (read (head args) :: Double) 0.6
