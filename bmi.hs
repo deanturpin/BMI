@@ -9,7 +9,6 @@ bmi mass = mass / (height * height)
 -- Calculate tyre pressures
 -- Pressures proportional to combined mass of the rider and bike
 -- Assumes 25mm tyre
--- toRational(1 / (2.2 * 0.978))
 bikeMass = 11
 pressure riderMass loading = (((riderMass + bikeMass) * 2.2 * 0.978 * loading)) + (-10.187)
 
@@ -18,9 +17,8 @@ pressure riderMass loading = (((riderMass + bikeMass) * 2.2 * 0.978 * loading)) 
 -- Calculate optimum tyre pressures
 main = do
 	args <- getArgs
-	print $ bmi (read (head args) :: Double)
 	putStr "BMI "
-	print $ (25 + 18.5) / 2
+	print $ bmi (read (head args) :: Double)
 	putStr "Front pressure "
 	print $ pressure (read (head args) :: Double) 0.4
 	putStr "Rear pressure "

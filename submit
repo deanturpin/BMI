@@ -1,18 +1,12 @@
 #!/bin/bash
 
-# Send all stderr to stdout
-exec 2>&1
-
-# Print MIME type (and an extra blank line)
-cat <<MIME
-Content-Type: text/plain
-
-MIME
-
 # Check params
-[[ $QUERY_STRING == '' ]] && echo Error: no query && exit
+[[ $# < 1 ]] && echo Error: no query && exit
 
-readonly mass=$QUERY_STRING
+readonly mass=$1
+
+# Optional heartrate
+[[ $# == 2 ]] && readonly heartrate=$2
 
 # Database
 db=weights.csv
@@ -24,7 +18,7 @@ date=$(date +%Y/%m/%d)
 if [[ $(grep $date $db) ]]; then
 	echo Error: already submitted today
 else
-	echo -e "$date,\t$mass" >> $db
+	echo -e "$date,\t$mass,\t$heartrate" >> $db
 	tail $db
 
 	# Print stats
