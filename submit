@@ -23,4 +23,7 @@ else
 
 	# Print stats
 	runghc bmi.hs $mass
+
+	git commit -am daily
+	git push
 fi
