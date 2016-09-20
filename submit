@@ -24,7 +24,7 @@ else
 	cat $db
 
 	# Print stats
-	runghc bmi.hs $mass
+	runhaskell bmi.hs $mass
 
 	git commit -am daily
 	git push
