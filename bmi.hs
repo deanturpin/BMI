@@ -16,10 +16,10 @@ pressure riderMass loading = (((riderMass + bikeMass) * 2.2 * 0.978 * loading)) 
 -- Calculate BMI
 -- Calculate optimum tyre pressures
 main = do
-	args <- getArgs
-	putStr "BMI "
-	print $ bmi (read (head args) :: Double)
-	putStr "Front pressure "
-	print $ pressure (read (head args) :: Double) 0.4
-	putStr "Rear pressure "
-	print $ pressure (read (head args) :: Double) 0.6
+    args <- getArgs
+    putStr "BMI "
+    print $ bmi (read (head args) :: Double)
+    putStr "Front pressure "
+    print $ pressure (read (head args) :: Double) 0.4
+    putStr "Rear pressure "
+    print $ pressure (read (head args) :: Double) 0.6

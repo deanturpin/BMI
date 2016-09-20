@@ -16,10 +16,12 @@ date=$(date +%Y/%m/%d)
 
 # Check if we've already submitted one today
 if [[ $(grep $date $db) ]]; then
+
 	echo Error: already submitted today
 else
+
 	echo -e "$date,\t$mass,\t$heartrate" >> $db
-	tail $db
+	cat $db
 
 	# Print stats
 	runghc bmi.hs $mass
